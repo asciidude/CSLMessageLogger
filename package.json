@@ -1,0 +1,17 @@
+{
+  "name": "messagelogger",
+  "version": "1.0.0",
+  "description": "<sub>Sorry to developers that may find this \"too informative\", trying my best to make this available to everyone. :)</sub>",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "console-log-colors": "^0.2.3",
+    "discord.js-selfbot-v13": "^2.8.4",
+    "dotenv": "^16.0.3"
+  }
+}

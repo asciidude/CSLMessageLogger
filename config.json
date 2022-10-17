@@ -1,0 +1,20 @@
+{
+    "modules": {
+        "dms": {
+            "create": false,
+            "delete": true,
+            "edit": true
+        },
+
+        "guilds": {
+            "create": false,
+            "delete": true,
+            "edit": true,
+            "logBots": false
+        },
+
+        "servers": [],
+        "servers_comment_": "Disable this module by leaving it blank. This module enables the ability to only see messages from certain servers.",
+        "servers_comment__": "Only put server IDs in this, seperate by a comma (,). Make sure to use quotes when putting server IDs in"
+    }
+}
