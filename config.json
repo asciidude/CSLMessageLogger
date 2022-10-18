@@ -2,19 +2,34 @@
     "modules": {
         "dms": {
             "create": false,
+            "create_info_": "true: Log message creations | false: Do not log message creations",
+
             "delete": true,
-            "edit": true
+            "delete_info_": "true: Log delete message events | false: Do not log delete message events",
+
+            "edit": true,
+            "edit_info_": "true: Log edit message events | false: Do not log edit message events"
         },
 
         "guilds": {
-            "create": false,
-            "delete": true,
-            "edit": true,
-            "logBots": false
+            "create": true,
+            "create_info_": "true: Log message creations | false: Do not log message creations",
+
+            "delete": false,
+            "delete_info_": "true: Log delete message events | false: Do not log delete message events",
+
+            "edit": false,
+            "edit_info_": "true: Log edit message events | false: Do not log edit message events",
+
+            "bots": true,
+            "bots_info_": "This determines whether or not bot messages are logged"
         },
 
         "servers": [],
-        "servers_comment_": "Disable this module by leaving it blank. This module enables the ability to only see messages from certain servers.",
-        "servers_comment__": "Only put server IDs in this, seperate by a comma (,). Make sure to use quotes when putting server IDs in"
+        "servers_info_": "Disable this module by leaving it blank. This module enables the ability to only see messages from certain servers.",
+        "servers_info__": "Only put server IDs in this, seperate by a comma (,). Make sure to use quotes when putting server IDs in",
+
+        "servers_ignore": ["662267976984297473"],
+        "servers_ignore_info_": "The servers you want to ignore. seperate by a comma and seperate your servers in quotes"
     }
 }
