@@ -64,6 +64,37 @@ client.on('messageCreate', async (message) => {
     }
 });
 
+client.on('messageDelete', async (message) => {
+    if(message.author == null) return;
+    if(!config.modules.guilds.bots && message.author.bot) return;
+    if(message.guild != null && config.modules.servers_ignore.includes(message.guild.id)) return;
+
+    if(
+        config.modules.servers.length > 0
+        && config.modules.servers.includes(message.guild.id)
+    ) {
+        if(message.author.id === client.user.id) return;
+
+        if(config.modules.guilds.delete) {
+            console.log(`${color.redBright(`[Log | MessageDelete | ${message.guild.name} (${message.guild.id})] | #${message.channel.name}] `)}`
+                                         + `${color.gray(message.author.tag)}: ${message.content}`);
+        }
+    }
+
+    if(config.modules.servers.length === 0) {
+        if(message.author.id === client.user.id) return;
+    
+        if(config.modules.guilds.delete) {
+            console.log(`${color.redBright(`[Log | MessageDelete | ${message.guild.name} (${message.guild.id})] | #${message.channel.name}] `)}`
+                                         + `${color.gray(message.author.tag)}: ${message.content}`);
+        }
+    }
+
+    if(config.modules.dms.delete && message.channel.type == 'DM') {
+        console.log(`${color.redBright(`[Log | MessageDelete | ${message.author.tag}]`)} ${message.content}`);
+    }
+});
+
 client.on('messageUpdate', async (oldMessage, newMessage) => {
     if(oldMessage.author == null || newMessage.author == null) return;
     if(!config.modules.guilds.bots && newMessage.author.bot) return;
@@ -94,45 +125,6 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
 
     if(config.modules.dms.edit && oldMessage.channel.type == 'DM') {
         console.log(`${color.bgGreenBright(`[Log | MessageEdit | ${newMessage.author.tag}]`)} ${oldMessage.content} > ${newMessage.content}`);
-    }
-});
-
-client.on('messageDelete', async (message) => {
-    if(message.author == null) return;
-    if(!config.modules.guilds.bots && message.author.bot) return;
-    if(message.guild != null && config.modules.servers_ignore.includes(message.guild.id)) return;
-
-    if(
-        config.modules.servers.length > 0
-        && config.modules.servers.includes(message.guild.id)
-    ) {
-        if(message.author.id === client.user.id) return;
-
-        if(config.modules.guilds.delete) {
-            if(!config.modules.guilds.bots) {
-                if(message.author.bot) return;
-            }
-
-            console.log(`${color.redBright(`[Log | MessageDelete | ${message.guild.name} (${message.guild.id})] | #${message.channel.name}] `)}`
-                                         + `${color.gray(message.author.tag)}: ${message.content}`);
-        }
-    }
-
-    if(config.modules.servers.length === 0) {
-        if(message.author.id === client.user.id) return;
-    
-        if(!config.modules.guilds.delete) {
-            if(!config.modules.guilds.bots) {
-                if(message.author.bot) return;
-            }
-    
-            console.log(`${color.redBright(`[Log | MessageDelete | ${message.guild.name} (${message.guild.id})] | #${message.channel.name}] `)}`
-                                         + `${color.gray(message.author.tag)}: ${message.content}`);
-        }
-    }
-
-    if(config.modules.dms.delete && message.channel.type == 'DM') {
-        console.log(`${color.redBright(`[Log | MessageDelete | ${message.author.tag}]`)} ${message.content}`);
     }
 });
 

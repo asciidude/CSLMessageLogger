@@ -21,7 +21,7 @@
             "edit": false,
             "edit_info_": "true: Log edit message events | false: Do not log edit message events",
 
-            "bots": false,
+            "bots": true,
             "bots_info_": "This determines whether or not bot messages are logged"
         },
 
