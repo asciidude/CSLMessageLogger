@@ -12,16 +12,16 @@
         },
 
         "guilds": {
-            "create": true,
+            "create": false,
             "create_info_": "true: Log message creations | false: Do not log message creations",
 
-            "delete": false,
+            "delete": true,
             "delete_info_": "true: Log delete message events | false: Do not log delete message events",
 
             "edit": false,
             "edit_info_": "true: Log edit message events | false: Do not log edit message events",
 
-            "bots": true,
+            "bots": false,
             "bots_info_": "This determines whether or not bot messages are logged"
         },
 
