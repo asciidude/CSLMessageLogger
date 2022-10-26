@@ -24,7 +24,7 @@ client.on('ready', async () => {
 });
 
 client.on('messageCreate', async (message) => {
-    if(message.author == null || message.guild == null) return;
+    if(message.author == null) return;
     if(!config.modules.guilds.bots && message.author.bot) return;
     if(message.guild != null && config.modules.servers_ignore.includes(message.guild.id)) return;
 
@@ -32,6 +32,7 @@ client.on('messageCreate', async (message) => {
         config.modules.servers.length > 0
         && config.modules.servers.includes(message.guild.id)
     ) {
+        if(message.guild == null) return;
         if(message.author.id === client.user.id) return;
 
         if(config.modules.guilds.create) {
@@ -47,6 +48,7 @@ client.on('messageCreate', async (message) => {
     }
 
     if(config.modules.servers.length === 0) {
+        if(message.guild == null) return;
         if(message.author.id === client.user.id) return;
     
         if(config.modules.guilds.create) {
@@ -65,7 +67,7 @@ client.on('messageCreate', async (message) => {
 });
 
 client.on('messageDelete', async (message) => {
-    if(message.author == null || message.guild == null) return;
+    if(message.author == null) return;
     if(!config.modules.guilds.bots && message.author.bot) return;
     if(message.guild != null && config.modules.servers_ignore.includes(message.guild.id)) return;
 
@@ -73,6 +75,7 @@ client.on('messageDelete', async (message) => {
         config.modules.servers.length > 0
         && config.modules.servers.includes(message.guild.id)
     ) {
+        if(message.guild == null) return;
         if(message.author.id === client.user.id) return;
 
         if(config.modules.guilds.delete) {
@@ -82,6 +85,7 @@ client.on('messageDelete', async (message) => {
     }
 
     if(config.modules.servers.length === 0) {
+        if(message.guild == null) return;
         if(message.author.id === client.user.id) return;
     
         if(config.modules.guilds.delete) {
@@ -96,7 +100,7 @@ client.on('messageDelete', async (message) => {
 });
 
 client.on('messageUpdate', async (oldMessage, newMessage) => {
-    if(oldMessage.author == null || newMessage.author == null || newMessage.guild == null) return;
+    if(oldMessage.author == null || newMessage.author == null) return;
     if(!config.modules.guilds.bots && newMessage.author.bot) return;
     if(newMessage.guild != null && config.modules.servers_ignore.includes(newMessage.guild.id)) return;
 
@@ -104,6 +108,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         config.modules.servers.length > 0
         && config.modules.servers.includes(newMessage.guild.id)
     ) {
+        if(newMessage.guild == null) return;
         if(newMessage.author.id === client.user.id) return;
 
         if(config.modules.guilds.edit) {
@@ -115,6 +120,7 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
     }
 
     if(config.modules.servers.length === 0) {
+        if(newMessage.guild == null) return;
         if(newMessage.author.id === client.user.id) return;
     
         if(config.modules.guilds.edit) {
