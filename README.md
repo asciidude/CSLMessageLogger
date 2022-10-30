@@ -10,7 +10,7 @@ CSLMessageLogger was created as an alternative to MessageLoggerV2 (Discord plugi
 
 ## How do I use CSLMessageLogger?
 ### YOU NEED NODE FOR THIS TO WORK!
-*After installing node, make sure to run `npm` in the console to install all dependencies*\
+*After installing node, make sure to run `npm install` in the console to install all dependencies*\
 https://nodejs.dev/en/
 
 1. **Firstly**, you need to download this GitHub repository. Handle that how you will, but I recommend using `git clone <repositoryURL>` - doesn't matter how you do it though.
