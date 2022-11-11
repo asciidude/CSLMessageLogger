@@ -9,9 +9,12 @@ https://discord.com/tos
 CSLMessageLogger was created as an alternative to MessageLoggerV2 (Discord plugin). This bot is, once again, against TOS and I recommend against using it (as with BetterDiscord).
 
 ## How do I use CSLMessageLogger?
+## I will not help you if you don't read this tutorial first.
 ### YOU NEED NODE FOR THIS TO WORK!
 *After installing node, make sure to run `npm install` in the console to install all dependencies*\
 https://nodejs.dev/en/
+
+### Also, make sure you're in the project directory when running any node commands.
 
 1. **Firstly**, you need to download this GitHub repository. Handle that how you will, but I recommend using `git clone <repositoryURL>` - doesn't matter how you do it though.
 
