@@ -25,7 +25,7 @@ client.on('ready', async () => {
 
 client.on('messageCreate', async (message) => {
     if(message.author == null) return;
-    if(config.modules.guilds.bots && message.author.bot) return;
+    if(!config.modules.guilds.bots && message.author.bot) return;
     if(message.guild != null && config.modules.servers_ignore.includes(message.guild.id)) return;
 
     if(
@@ -60,7 +60,7 @@ client.on('messageCreate', async (message) => {
 
 client.on('messageDelete', async (message) => {
     if(message.author == null) return;
-    if(config.modules.guilds.bots && message.author.bot) return;
+    if(!config.modules.guilds.bots && message.author.bot) return;
     if(message.guild != null && config.modules.servers_ignore.includes(message.guild.id)) return;
 
     if(
