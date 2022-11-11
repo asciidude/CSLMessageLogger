@@ -25,8 +25,14 @@ client.on('ready', async () => {
 
 client.on('messageCreate', async (message) => {
     if(message.author == null) return;
+
+    if(config.modules.dms.create && message.channel.type == 'DM') {
+        console.log(`${color.greenBright(`[Log | MessageCreate | ${message.author.tag}]`)} ${message.content}`);
+        return;
+    }
+    
     if(!config.modules.guilds.bots && message.author.bot) return;
-    if(message.guild != null && config.modules.servers_ignore.includes(message.guild.id)) return;
+    if(message.guild != null || config.modules.servers_ignore.includes(message.guild.id)) return;
 
     if(
         config.modules.servers.length > 0
@@ -50,19 +56,23 @@ client.on('messageCreate', async (message) => {
         if(config.modules.guilds.create) {
             console.log(`${color.greenBright(`[Log | MessageCreate | ${message.guild.name} (${message.guild.id}) | #${message.channel.name}] `)}`
                                            + `${color.gray(message.author.tag)}: ${message.content}`);
+            
+            return;
         }
-    }
-
-    if(config.modules.dms.create && message.channel.type == 'DM') {
-        console.log(`${color.greenBright(`[Log | MessageCreate | ${message.author.tag}]`)} ${message.content}`);
     }
 });
 
 client.on('messageDelete', async (message) => {
     if(message.author == null) return;
-    if(!config.modules.guilds.bots && message.author.bot) return;
-    if(message.guild != null && config.modules.servers_ignore.includes(message.guild.id)) return;
 
+    if(config.modules.dms.delete && message.channel.type == 'DM') {
+        console.log(`${color.redBright(`[Log | MessageDelete | ${message.author.tag}]`)} ${message.content}`);
+        return;
+    }
+    
+    if(!config.modules.guilds.bots && message.author.bot) return;
+    if(message.guild != null || config.modules.servers_ignore.includes(message.guild.id)) return;
+    
     if(
         config.modules.servers.length > 0
         && config.modules.servers.includes(message.guild.id)
@@ -73,6 +83,8 @@ client.on('messageDelete', async (message) => {
         if(config.modules.guilds.delete) {
             console.log(`${color.redBright(`[Log | MessageDelete | ${message.guild.name} (${message.guild.id})] | #${message.channel.name}] `)}`
                                          + `${color.gray(message.author.tag)}: ${message.content}`);
+            
+            return;
         }
     }
 
@@ -81,21 +93,24 @@ client.on('messageDelete', async (message) => {
         if(message.author.id === client.user.id) return;
     
         if(config.modules.guilds.delete) {
-            console.log(`${color.redBright(`[Log | MessageDelete | ${message.guild.name} (${message.guild.id})] | #${message.channel.name}] `)}`
+            return console.log(`${color.redBright(`[Log | MessageDelete | ${message.guild.name} (${message.guild.id})] | #${message.channel.name}] `)}`
                                          + `${color.gray(message.author.tag)}: ${message.content}`);
+            
+            return;
         }
-    }
-
-    if(config.modules.dms.delete && message.channel.type == 'DM') {
-        console.log(`${color.redBright(`[Log | MessageDelete | ${message.author.tag}]`)} ${message.content}`);
     }
 });
 
 client.on('messageUpdate', async (oldMessage, newMessage) => {
     if(oldMessage.author == null || newMessage.author == null) return;
+
+    if(config.modules.dms.edit && oldMessage.channel.type == 'DM') {
+        return console.log(`${color.bgGreenBright(`[Log | MessageEdit | ${newMessage.author.tag}]`)} ${oldMessage.content} > ${newMessage.content}`);
+    }
+    
     if(!config.modules.guilds.bots && newMessage.author.bot) return;
     if(newMessage.guild != null && config.modules.servers_ignore.includes(newMessage.guild.id)) return;
-
+    
     if(
         config.modules.servers.length > 0
         && config.modules.servers.includes(newMessage.guild.id)
@@ -106,9 +121,9 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         if(config.modules.guilds.edit) {
             console.log(`${color.bgGreenBright(`[Log | MessageEdit | ${newMessage.guild.name} (${newMessage.guild.id}) | #${newMessage.channel.name}]`)} `
                                              + `${color.gray(newMessage.author.tag)}: ${oldMessage.content} > ${newMessage.content}`);
-        }
 
-        return;
+            return;
+        }
     }
 
     if(config.modules.servers.length === 0) {
@@ -118,11 +133,9 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
         if(config.modules.guilds.edit) {
             console.log(`${color.bgGreenBright(`[Log | MessageEdit | ${newMessage.guild.name} (${newMessage.guild.id}) | #${newMessage.channel.name}]`)} `
                                              + `${color.gray(newMessage.author.tag)}: ${oldMessage.content} > ${newMessage.content}`);
+            
+            return;
         }
-    }
-
-    if(config.modules.dms.edit && oldMessage.channel.type == 'DM') {
-        console.log(`${color.bgGreenBright(`[Log | MessageEdit | ${newMessage.author.tag}]`)} ${oldMessage.content} > ${newMessage.content}`);
     }
 });
 
