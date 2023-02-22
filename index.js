@@ -32,7 +32,9 @@ client.on('messageCreate', async (message) => {
     }
     
     if(!config.modules.guilds.bots && message.author.bot) return;
-    if(message.guild != null || config.modules.servers_ignore.includes(message.guild.id)) return;
+    
+    if(message.guild != null) return;
+    if(config.modules.servers_ignore.includes(message.guild.id)) return;
 
     if(
         config.modules.servers.length > 0
@@ -71,7 +73,9 @@ client.on('messageDelete', async (message) => {
     }
     
     if(!config.modules.guilds.bots && message.author.bot) return;
-    if(message.guild != null || config.modules.servers_ignore.includes(message.guild.id)) return;
+    
+    if(message.guild != null) return;
+    if(config.modules.servers_ignore.includes(message.guild.id)) return;
     
     if(
         config.modules.servers.length > 0
