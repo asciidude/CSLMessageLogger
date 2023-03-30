@@ -1,5 +1,8 @@
 <sub>Sorry to developers that may find this "too informative", trying my best to make this available to everyone. :)</sub>
 
+# ⚠ This program is no longer maintained due to the MessageLogger plugin being fixed.
+Please do not contact me about this, especially not on my company server.
+
 # ❗❗ THIS IS AGAINST TOS! ❗❗ (same with BD)
 Discord doesn't take self bots lightly. I recommend looking into other options before moving forward with the use of this. Though, this bot will **NOT** and will **NEVER** interact with your account other than logging in and will simply log events, so it is **undetectable** in a way, but still advised *against* use.
 
