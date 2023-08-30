@@ -33,7 +33,7 @@ client.on('messageCreate', async (message) => {
     
     if(!config.modules.guilds.bots && message.author.bot) return;
     
-    if(message.guild != null) return;
+    if(message.guild == null) return;
     if(config.modules.servers_ignore.includes(message.guild.id)) return;
 
     if(
@@ -74,7 +74,7 @@ client.on('messageDelete', async (message) => {
     
     if(!config.modules.guilds.bots && message.author.bot) return;
     
-    if(message.guild != null) return;
+    if(message.guild == null) return;
     if(config.modules.servers_ignore.includes(message.guild.id)) return;
     
     if(
@@ -113,7 +113,8 @@ client.on('messageUpdate', async (oldMessage, newMessage) => {
     }
     
     if(!config.modules.guilds.bots && newMessage.author.bot) return;
-    if(newMessage.guild != null && config.modules.servers_ignore.includes(newMessage.guild.id)) return;
+    if(newMessage.guild == null) return;
+    if(config.modules.servers_ignore.includes(newMessage.guild.id)) return;
     
     if(
         config.modules.servers.length > 0
